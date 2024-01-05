@@ -197,3 +197,12 @@ action:
     target:
       entity_id: cover.motion_shade
 ```
+
+### Fixing multicast issues on dual-homed hosts
+
+If you experience problems with device discovery and other multicast related features you can try to add a route to the mutlicast IP to the network interface that talks to the network or VLAN that the Motionblinds gateway is located in. This may help in situations where Home-Assistant is running inside docker on a dual-homed host (in Docker's host networking mode).
+To add the route execute the following command. If this helps, persist the change using your distributions method of choice.
+```
+ip route add 238.0.0.18 dev <interface>
+```
+
